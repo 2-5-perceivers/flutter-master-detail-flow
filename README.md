@@ -1,3 +1,6 @@
+# master_detail_flow
+[![pub package](https://img.shields.io/pub/v/master_detail_flow?color=green)](https://pub.dartlang.org/packages/master_detail_flow)
+
 A Flutter plugin that allows you to build fast, responsive and beautiful MasterDetailFlows using
 Material 3 design that you can use to create your own license page or responsive layout page.
 
