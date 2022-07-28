@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
               subtitle: const Text('This is the second option after a divider'),
               showSubtitleOnDetails: true,
               detailsListChildBuilder: (BuildContext context, int index) =>
-              const SizedBox(
+                  const SizedBox(
                 height: double.maxFinite,
                 child: Center(
                   child: Text('A centered object'),

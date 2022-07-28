@@ -60,7 +60,8 @@ class MasterDetailFlowItem extends MasterDetailFlowItemBase {
     this.trailing,
     this.detailsChildrenCount,
     this.key,
-  })  : assert(detailsChildrenCount == null || detailsChildrenCount >= 0, 'detailsChildren must not be null and have a length bigger than zero'),
+  })  : assert(detailsChildrenCount == null || detailsChildrenCount >= 0,
+            'detailsChildren must not be null and have a length bigger than zero'),
         super(
           selectable: true,
         );

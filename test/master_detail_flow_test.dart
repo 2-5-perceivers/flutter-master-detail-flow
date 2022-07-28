@@ -5,7 +5,7 @@ import 'package:master_detail_flow/master_detail_flow.dart';
 void main() {
   testWidgets(
     'MasterDetailFlow tester',
-        (WidgetTester tester) async {
+    (WidgetTester tester) async {
       final Key listTileKey1 = GlobalKey();
       final Key listTileKey2 = GlobalKey();
 
@@ -16,7 +16,7 @@ void main() {
               MasterDetailFlowItem(
                 title: const Text('KeyOne'),
                 detailsListChildBuilder: (BuildContext context, int index) =>
-                const Text(
+                    const Text(
                   'Key One Details',
                 ),
                 detailsChildrenCount: 1,
@@ -25,7 +25,7 @@ void main() {
               MasterDetailFlowItem(
                 title: const Text('KeyTwo'),
                 detailsListChildBuilder: (BuildContext context, int index) =>
-                const Text(
+                    const Text(
                   'Key Two Details',
                 ),
                 detailsChildrenCount: 2,
@@ -45,7 +45,7 @@ void main() {
         expect(find.text('Key One Details'), findsNothing);
         expect(find.text('Key Two Details'), findsNothing);
 
-        if(secondTile) {
+        if (secondTile) {
           await tester.tap(find.byKey(listTileKey2));
           await tester.pumpAndSettle();
 
