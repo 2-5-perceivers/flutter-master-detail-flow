@@ -43,7 +43,7 @@ class MasterDetailsFlow extends StatefulWidget {
   final Widget? nothingSelectedWidget;
 
   /// The required list of items.
-  final List<MasterItem> items;
+  final List<MasterItemBase> items;
 
   /// An optional integer to specify if the masterFlow should start with a
   /// selected page.
@@ -77,7 +77,7 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
         widget.initialPage! < widget.items.length,
         'Initial page out of bounds',
       );
-      selectedItem = widget.items[widget.initialPage!];
+      selectedItem = widget.items[widget.initialPage!] as MasterItem;
       focus = Focus.details;
     }
   }
@@ -121,7 +121,11 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
                     if (index == widget.items.length) {
                       return const FinalPadding();
                     }
-                    final MasterItem item = widget.items[index];
+                    final MasterItemBase itemBase = widget.items[index];
+                    if (itemBase is Widget) {
+                      return itemBase as Widget;
+                    }
+                    final MasterItem item = itemBase as MasterItem;
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 12,
@@ -234,7 +238,11 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
                     if (index == widget.items.length) {
                       return const FinalPadding();
                     }
-                    final MasterItem item = widget.items[index];
+                    final MasterItemBase itemBase = widget.items[index];
+                    if (itemBase is Widget) {
+                      return itemBase as Widget;
+                    }
+                    final MasterItem item = itemBase as MasterItem;
                     return ListTile(
                       title: Text(item.title),
                       leading: item.leading,

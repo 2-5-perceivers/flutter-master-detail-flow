@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
         body: MasterDetailsFlow(
           title: const Text(_title),
           items: [
+            const MasterItemHeader(
+              child: Text('jndjdn'),
+            ),
             MasterItem(
               'Item one',
               detailsBuilder: (_) => const DetailsItem(
@@ -55,6 +58,7 @@ class MyApp extends StatelessWidget {
                 ],
               ),
             ),
+            const MasterItemDivider(),
             MasterItem(
               'Item 4',
               leading: const Icon(Icons.account_tree_rounded),

@@ -1,3 +1,6 @@
+## 2.1.0
+* Create new header and divider widgets
+
 ## 2.0.1
 * Update README.md
 
