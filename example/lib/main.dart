@@ -13,40 +13,64 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: _title,
       theme: ThemeData(
-          useMaterial3: true,
-          brightness: Brightness.light,
-          colorSchemeSeed: Colors.blue),
+        useMaterial3: true,
+        brightness: Brightness.light,
+        colorSchemeSeed: Colors.blue,
+      ),
       home: Scaffold(
-        body: MasterDetailFlow.fromItems(
-          title: const Text('MasterDetailFlow'),
-          masterItems: <MasterDetailFlowItemBase>[
-            MasterDetailFlowTitle(
-              child: Container(
-                color: Colors.green,
-                height: 200,
-                child: const Center(
-                  child: Text('Title'),
+        body: MasterDetailsFlow(
+          title: const Text(_title),
+          items: [
+            MasterItem(
+              'Item one',
+              detailsBuilder: (_) => const DetailsItem(
+                title: Text(
+                  'Item one details title',
                 ),
               ),
             ),
-            MasterDetailFlowItem(
-              title: const Text('Option One'),
-              detailsListChildBuilder: (BuildContext context, int index) =>
-                  Text('Hello World $index'),
-            ),
-            const MasterDetailFlowDivider(child: Divider()),
-            MasterDetailFlowItem(
-              title: const Text('Option Two'),
-              subtitle: const Text('This is the second option after a divider'),
-              showSubtitleOnDetails: true,
-              detailsListChildBuilder: (BuildContext context, int index) =>
-                  const SizedBox(
-                height: double.maxFinite,
-                child: Center(
-                  child: Text('A centered object'),
+            MasterItem(
+              'Item two',
+              detailsBuilder: (_) => const DetailsItem(
+                title: Text(
+                  'Item two details title',
                 ),
+                children: [
+                  Text('One children'),
+                ],
               ),
-              detailsChildrenCount: 1,
+            ),
+            MasterItem(
+              'Advanced item 3',
+              detailsBuilder: (_) => DetailsItem(
+                title: const Text(
+                  'Using a custom sliver',
+                ),
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) => Text('This is item $index'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            MasterItem(
+              'Item 4',
+              leading: const Icon(Icons.account_tree_rounded),
+              detailsBuilder: (_) => DetailsItem(
+                title: const Text(
+                  'Using a custom sliver',
+                ),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.help,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

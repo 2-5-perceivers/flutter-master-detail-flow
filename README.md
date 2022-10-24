@@ -4,48 +4,49 @@
 A Flutter plugin that allows you to build fast, responsive and beautiful MasterDetailFlows using
 Material 3 design that you can use to create your own license page or responsive layout page.
 
+![Screeshot](https://github.com/2-5-perceivers/flutter_master_details_flow/raw/main/images/s1.png)
+
 ## Getting started
 
-The package exposes a `MasterDetailFlow` widget. You can use the widget as a page itself or inside a
-Scaffold.
+The package exposes a `MasterDetailsFlow` widget. You can use the widget inside a Scaffold.
 
 ## Usage
 
-Create a new MasterDetailFlow using its fromItems constructor. You can also use the normal
-constructor for more advanced usages.
+Create a new MasterDetailsFlow  and provide the MasterItems list. Read more in documentation.
 
 ```dart
-MasterDetailFlow.fromItems(
-  title: const Text('MasterDetailFlow'),
-  masterItems: <MasterDetailFlowItemBase>[
-    MasterDetailFlowTitle(
-      child: Container(
-        color: Colors.green,
-        height: 200,
-        child: const Center(
-          child: Text('Title'),
+Scaffold(
+  body: MasterDetailsFlow(
+    title: const Text(_title),
+    items: [
+      MasterItem(
+        'Item one',
+        detailsBuilder: (_) => const DetailsItem(
+          title: Text(
+            'Item one details title',
+          ),
         ),
       ),
-    ),
-    MasterDetailFlowItem(
-      title: const Text('Option One'),
-      detailsListChildBuilder: (BuildContext context, int index) =>
-          Text('Hello World $index'),
-    ),
-    const MasterDetailFlowDivider(child: Divider()),
-    MasterDetailFlowItem(
-      title: const Text('Option Two'),
-      subtitle: const Text('This is the second option after a divider'),
-      showSubtitleOnDetails: true,
-      detailsListChildBuilder: (BuildContext context, int index) =>
-      const SizedBox(
-        height: double.maxFinite,
-        child: Center(
-          child: Text('A centered object'),
+      MasterItem(
+        'Item two',
+        detailsBuilder: (_) => const DetailsItem(
+          title: Text(
+            'Item two details title',
+          ),
+          children: [
+            Text('One children'),
+          ],
         ),
       ),
-      detailsChildrenCount: 1,
-    ),
-  ],
+    ],
+  ),
 ),
 ```
+
+## Create a custom details page
+Start by creating a new widget and then, inside the widget get the Flow Settings using
+```dart 
+final MasterDetailsFlowSettings? settings =
+        MasterDetailsFlowSettings.of(context);
+```
+The MasterDetailsFlow will provide here a method to goBack if it is in page mode, a bool indicating if it is in page mode and app bar settings, but they can be ignored if wanted. Ensure that if you use app bars inside the details page you set `automaticallyImplyLeading: false` and create a way to go back if `settings.selfPage` is `true`.
