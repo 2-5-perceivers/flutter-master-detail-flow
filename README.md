@@ -4,7 +4,7 @@
 A Flutter plugin that allows you to build fast, responsive and beautiful MasterDetailFlows using
 Material 3 design that you can use to create your own license page or responsive layout page.
 
-![Screeshot](https://github.com/2-5-perceivers/flutter_master_details_flow/raw/main/images/s1.png)
+![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s1.png?raw=true)
 
 ## Getting started
 

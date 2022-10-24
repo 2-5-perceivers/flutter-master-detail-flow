@@ -1,6 +1,6 @@
 name: master_detail_flow
 description: A package that provides a simple master-detail-flow with material 3
-version: 2.0.0
+version: 2.0.1
 repository: https://github.com/2-5-perceivers/flutter-master-detail-flow
 
 environment:
