@@ -21,8 +21,16 @@ class MyApp extends StatelessWidget {
         body: MasterDetailsFlow(
           title: const Text(_title),
           items: [
-            const MasterItemHeader(
-              child: Text('jndjdn'),
+            MasterItemHeader(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Cool example',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                ),
+              ),
             ),
             MasterItem(
               'Item one',
