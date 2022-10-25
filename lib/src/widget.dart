@@ -18,6 +18,7 @@ class MasterDetailsFlow extends StatefulWidget {
     this.nothingSelectedWidget,
     this.lateralDetailsAppBar = DetailsAppBarSize.medium,
     this.pageDetailsAppBar = DetailsAppBarSize.large,
+    this.masterAppBar = DetailsAppBarSize.small,
     super.key,
   });
 
@@ -49,17 +50,23 @@ class MasterDetailsFlow extends StatefulWidget {
   /// selected page.
   final int? initialPage;
 
-  /// Selects the app style used when details page is in lateral view.
+  /// Selects the app bar style used when details page is in lateral view.
   ///
   /// See:
   ///   * [DetailsAppBarSize]
   final DetailsAppBarSize lateralDetailsAppBar;
 
-  /// Selects the app style used when details page is in page view.
+  /// Selects the app bar style used when details page is in page view.
   ///
   /// See:
   ///   * [DetailsAppBarSize]
   final DetailsAppBarSize pageDetailsAppBar;
+
+  /// Selects the app bar style used when the master list is in page view.
+  ///
+  /// See:
+  ///   * [DetailsAppBarSize]
+  final DetailsAppBarSize masterAppBar;
 
   @override
   State<MasterDetailsFlow> createState() => _MasterDetailsFlowState();
@@ -220,20 +227,24 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
               )
             : Scaffold(
                 key: ValueKey<MasterItem?>(selectedItem),
-                appBar: _appBar(),
-                body: ListView.builder(
-                  itemBuilder: (BuildContext context, int index) {
-                    if (index == widget.items.length) {
-                      return const FinalPadding();
-                    }
-                    final MasterItemBase itemBase = widget.items[index];
-                    if (itemBase is Widget) {
-                      return itemBase as Widget;
-                    }
-                    final MasterItem item = itemBase as MasterItem;
-                    return listTileBuilder(item, page: true);
-                  },
-                  itemCount: widget.items.length + 1,
+                body: CustomScrollView(
+                  slivers: <Widget>[
+                    _sliverAppBar(widget.masterAppBar),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          final MasterItemBase itemBase = widget.items[index];
+                          if (itemBase is Widget) {
+                            return itemBase as Widget;
+                          }
+                          final MasterItem item = itemBase as MasterItem;
+                          return listTileBuilder(item, page: true);
+                        },
+                        childCount: widget.items.length,
+                      ),
+                    ),
+                    const SliverFinalPadding(),
+                  ],
                 ),
               ),
       );
@@ -273,5 +284,25 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
       title: widget.title,
       scrolledUnderElevation: 0,
     );
+  }
+
+  SliverAppBar _sliverAppBar(DetailsAppBarSize appBarSize) {
+    switch (appBarSize) {
+      case DetailsAppBarSize.small:
+        return SliverAppBar(
+          actions: widget.actions,
+          title: widget.title,
+        );
+      case DetailsAppBarSize.medium:
+        return SliverAppBar.medium(
+          actions: widget.actions,
+          title: widget.title,
+        );
+      case DetailsAppBarSize.large:
+        return SliverAppBar.large(
+          actions: widget.actions,
+          title: widget.title,
+        );
+    }
   }
 }
