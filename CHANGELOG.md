@@ -1,3 +1,8 @@
+## 2.2.0
+* Added subtitles for masterItem
+* You can now also customize the app bar size in master view when collapsed
+* New example
+
 ## 2.1.0
 * Create new header and divider widgets
 
