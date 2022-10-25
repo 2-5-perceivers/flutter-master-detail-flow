@@ -131,19 +131,7 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
                         horizontal: 12,
                         vertical: 2,
                       ),
-                      child: ListTile(
-                        title: Text(item.title),
-                        leading: item.leading,
-                        trailing: item.trailing,
-                        selected: selectedItem?.title == item.title,
-                        onTap: item.onTap ??
-                            () {
-                              setState(() {
-                                selectedItem = item;
-                                focus = Focus.details;
-                              });
-                            },
-                      ),
+                      child: listTileBuilder(item),
                     );
                   },
                   itemCount: widget.items.length + 1,
@@ -243,28 +231,39 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
                       return itemBase as Widget;
                     }
                     final MasterItem item = itemBase as MasterItem;
-                    return ListTile(
-                      title: Text(item.title),
-                      leading: item.leading,
-                      trailing: item.trailing,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      onTap: item.onTap ??
-                          () {
-                            setState(() {
-                              selectedItem = item;
-                              focus = Focus.details;
-                            });
-                          },
-                    );
+                    return listTileBuilder(item, page: true);
                   },
                   itemCount: widget.items.length + 1,
                 ),
               ),
       );
     }
+  }
+
+  ListTile listTileBuilder(
+    MasterItem item, {
+    bool page = false,
+  }) {
+    final Widget? subtitle =
+        item.subtitle != null ? Text(item.subtitle!) : null;
+    final EdgeInsets? contentPadding =
+        (page && item.subtitle == null) ? const EdgeInsets.all(8) : null;
+
+    return ListTile(
+      title: Text(item.title),
+      subtitle: subtitle,
+      leading: item.leading,
+      trailing: item.trailing,
+      selected: (selectedItem?.title == item.title) && !page,
+      contentPadding: contentPadding,
+      onTap: item.onTap ??
+          () {
+            setState(() {
+              selectedItem = item;
+              focus = Focus.details;
+            });
+          },
+    );
   }
 
   AppBar _appBar() {

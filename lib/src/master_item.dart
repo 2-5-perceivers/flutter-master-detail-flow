@@ -22,6 +22,7 @@ class MasterItem extends MasterItemBase {
   const MasterItem(
     this.title, {
     this.detailsBuilder,
+    this.subtitle,
     this.onTap,
     this.leading,
     this.trailing,
@@ -32,6 +33,9 @@ class MasterItem extends MasterItemBase {
 
   /// The title showed in the list tile
   final String title;
+
+  /// The optional subtitle showed in the list tile
+  final String? subtitle;
 
   /// [ListTile.leading] and [ListTile.trailing] corespondents
   final Widget? leading, trailing;

@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
             const MasterItemDivider(),
             MasterItem(
               'Item 4',
+              subtitle: 'Haha',
               leading: const Icon(Icons.account_tree_rounded),
               detailsBuilder: (_) => DetailsItem(
                 title: const Text(
