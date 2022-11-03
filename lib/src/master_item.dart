@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:master_detail_flow/src/typedefs.dart';
 
-/// a base for items
+/// A base for items. Implement this in a Widget class to create a custom
+/// master item
 abstract class MasterItemBase {
   /// Default constructor
   const MasterItemBase();
@@ -52,42 +53,60 @@ class MasterItem extends MasterItemBase {
   final GestureTapCallback? onTap;
 }
 
-/// A master item that acts as a header
+/// A master item that acts as a header..
 class MasterItemHeader extends StatelessWidget implements MasterItemBase {
   /// Creates a header
   const MasterItemHeader({
     required this.child,
+    this.cardPadding,
+    this.cardElevation = 2,
     super.key,
   });
 
   /// The child of
   final Widget child;
 
+  /// A padding to be put arround the card.
+  ///
+  /// Defaults to `EdgeInsets.symmetric(horizontal: 16, vertical: 8,)`.
+  final EdgeInsetsGeometry? cardPadding;
+
+  /// The card elevation.
+  ///
+  /// Defaults to 2.
+  final double cardElevation;
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          elevation: 2,
-          child: child,
-        ),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        minHeight: 200,
+      ),
+      child: Card(
+        margin: cardPadding ??
+            const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+        elevation: cardElevation,
+        child: child,
       ),
     );
   }
 }
 
-/// A divider for the master list
+/// A divider for the master list. That get's its indent from the listTileTheme
+/// in order to arrange with the list tiles
 class MasterItemDivider extends StatelessWidget implements MasterItemBase {
   /// Creates a divider
   const MasterItemDivider({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Divider(
-      indent: 12,
-      endIndent: 12,
+    final ListTileThemeData listTileTheme = ListTileTheme.of(context);
+    return Divider(
+      indent: listTileTheme.contentPadding?.horizontal ?? 16,
+      endIndent: listTileTheme.contentPadding?.horizontal ?? 16,
     );
   }
 }
