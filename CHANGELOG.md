@@ -1,3 +1,8 @@
+## 2.3.0
+* Customizable animation duration
+* New and improved example
+* More customization options and improved looks
+
 ## 2.2.0
 * Added subtitles for masterItem
 * You can now also customize the app bar size in master view when collapsed
