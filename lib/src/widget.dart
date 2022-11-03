@@ -19,6 +19,7 @@ class MasterDetailsFlow extends StatefulWidget {
     this.lateralDetailsAppBar = DetailsAppBarSize.medium,
     this.pageDetailsAppBar = DetailsAppBarSize.large,
     this.masterAppBar = DetailsAppBarSize.small,
+    this.transitionAnimationDuration = const Duration(milliseconds: 500),
     super.key,
   });
 
@@ -67,6 +68,9 @@ class MasterDetailsFlow extends StatefulWidget {
   /// See:
   ///   * [DetailsAppBarSize]
   final DetailsAppBarSize masterAppBar;
+
+  /// The default transition animation duration
+  final Duration transitionAnimationDuration;
 
   @override
   State<MasterDetailsFlow> createState() => _MasterDetailsFlowState();
@@ -147,7 +151,7 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
             ),
             Expanded(
               child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 500),
+                duration: widget.transitionAnimationDuration,
                 transitionBuilder:
                     (Widget child, Animation<double> animation) =>
                         const FadeUpwardsPageTransitionsBuilder()
