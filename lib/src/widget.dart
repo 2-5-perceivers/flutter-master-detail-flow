@@ -13,7 +13,11 @@ class MasterDetailsFlow extends StatefulWidget {
     required this.items,
     this.actions,
     this.autoImplyLeading = true,
+    this.breakpoint = 700,
     this.initialPage,
+    this.lateralMasterPanelWidth = 300.0,
+    this.detailsPanelCornersRadius = 12.0,
+    this.lateralListTileTheme,
     this.title,
     this.nothingSelectedWidget,
     this.lateralDetailsAppBar = DetailsAppBarSize.medium,
@@ -36,6 +40,25 @@ class MasterDetailsFlow extends StatefulWidget {
   /// widget should be. If false and [leading] is null, leading space is given to [title].
   /// If leading widget is not null, this parameter has no effect.
   final bool autoImplyLeading;
+
+  /// If the screen width is larger than breakpoint it moves to lateral view,
+  /// otherwise is in page mode.
+  ///
+  /// Defaults to 700.
+  final int breakpoint;
+
+  /// The width of the lateral panel that hold the tiles.
+  ///
+  /// Defaults to 300.0
+  final double lateralMasterPanelWidth;
+
+  /// The corners radius of the details panel
+  ///
+  /// Defaults to 12
+  final double detailsPanelCornersRadius;
+
+  /// The theme used by the selectable tiles on the lateral panel
+  final ListTileThemeData? lateralListTileTheme;
 
   /// The option title to be showed on the master app bar.
   final Widget? title;
@@ -99,7 +122,7 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
     final ColorScheme colorScheme = theme.colorScheme;
 
     final double screenWidth = MediaQuery.of(context).size.width;
-    final bool large = screenWidth >= 700;
+    final bool large = screenWidth >= widget.breakpoint;
 
     if (large) {
       return Scaffold(
@@ -109,23 +132,24 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Container(
-              constraints: const BoxConstraints(
-                maxWidth: 300,
+              constraints: BoxConstraints(
+                maxWidth: widget.lateralMasterPanelWidth,
               ),
               child: ListTileTheme(
-                data: ListTileThemeData(
-                  selectedColor: colorScheme.onSecondaryContainer,
-                  selectedTileColor: colorScheme.secondaryContainer,
-                  iconColor: colorScheme.onSurfaceVariant,
-                  textColor: colorScheme.onSurface,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                  contentPadding: const EdgeInsetsDirectional.only(
-                    start: 16,
-                    end: 24,
-                  ),
-                ),
+                data: widget.lateralListTileTheme ??
+                    ListTileThemeData(
+                      selectedColor: colorScheme.onSecondaryContainer,
+                      selectedTileColor: colorScheme.secondaryContainer,
+                      iconColor: colorScheme.onSurfaceVariant,
+                      textColor: colorScheme.onSurface,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(28),
+                      ),
+                      contentPadding: const EdgeInsetsDirectional.only(
+                        start: 16,
+                        end: 24,
+                      ),
+                    ),
                 style: ListTileStyle.drawer,
                 child: ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
@@ -138,8 +162,10 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
                     }
                     final MasterItem item = itemBase as MasterItem;
                     return Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
+                      padding: EdgeInsets.symmetric(
+                        horizontal:
+                            theme.listTileTheme.contentPadding?.horizontal ??
+                                16,
                         vertical: 2,
                       ),
                       child: listTileBuilder(item),
@@ -168,9 +194,9 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
                     end: 12,
                   ),
                   child: Material(
-                    shape: const RoundedRectangleBorder(
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(12),
+                        top: Radius.circular(widget.detailsPanelCornersRadius),
                       ),
                     ),
                     color: ElevationOverlay.applySurfaceTint(
@@ -261,8 +287,6 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
   }) {
     final Widget? subtitle =
         item.subtitle != null ? Text(item.subtitle!) : null;
-    final EdgeInsets? contentPadding =
-        (page && item.subtitle == null) ? const EdgeInsets.all(8) : null;
 
     return ListTile(
       title: Text(item.title),
@@ -270,7 +294,6 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
       leading: item.leading,
       trailing: item.trailing,
       selected: (selectedItem?.title == item.title) && !page,
-      contentPadding: contentPadding,
       onTap: item.onTap ??
           () {
             setState(() {

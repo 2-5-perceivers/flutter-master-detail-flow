@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 
 class LabelText extends StatelessWidget {
-  const LabelText(this.data, {
+  const LabelText(
+    this.data, {
     super.key,
   });
 

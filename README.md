@@ -63,4 +63,4 @@ In the example app you can find examples of how to create:
 
 Also you should read https://pub.dev/documentation/master_detail_flow/latest/
 
-![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s2.png?raw=true)![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s3.png?raw=true)![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s4.png?raw=true)![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s5.png?raw=true)
+![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s2.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s3.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s4.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s5.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/s6.png?raw=true)
