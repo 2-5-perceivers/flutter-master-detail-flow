@@ -6,7 +6,7 @@ class PageFuture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return FutureBuilder<List<MasterItem>>(
         future: Future.delayed(
             const Duration(seconds: 5),
             () => [
