@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart' hide Focus;
 import 'package:master_detail_flow/src/enums.dart';
@@ -106,7 +108,8 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
   @override
   void initState() {
     super.initState();
-    if (widget.initialPage != null) {
+    if (widget.initialPage != null &&
+        window.physicalSize.width >= widget.breakpoint) {
       assert(
         widget.initialPage! < widget.items.length,
         'Initial page out of bounds',
