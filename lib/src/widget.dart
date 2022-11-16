@@ -108,14 +108,15 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
   @override
   void initState() {
     super.initState();
-    if (widget.initialPage != null &&
-        window.physicalSize.width >= widget.breakpoint) {
+    if (widget.initialPage != null) {
       assert(
         widget.initialPage! < widget.items.length,
         'Initial page out of bounds',
       );
       selectedItem = widget.items[widget.initialPage!] as MasterItem;
-      focus = Focus.details;
+      if (window.physicalSize.width >= widget.breakpoint) {
+        focus = Focus.details;
+      }
     }
   }
 
