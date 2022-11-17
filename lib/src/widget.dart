@@ -11,10 +11,12 @@ class MasterDetailsFlow extends StatefulWidget {
   /// Creates the flow
   const MasterDetailsFlow({
     required this.items,
+    this.leading,
     this.actions,
     this.autoImplyLeading = true,
     this.breakpoint = 700,
     this.initialPage,
+    this.initialFocus = Focus.details,
     this.lateralMasterPanelWidth = 300.0,
     this.detailsPanelCornersRadius = 12.0,
     this.lateralListTileTheme,
@@ -26,6 +28,11 @@ class MasterDetailsFlow extends StatefulWidget {
     this.transitionAnimationDuration = const Duration(milliseconds: 500),
     super.key,
   });
+
+  /// A widget to display before the toolbar's [title].
+  ///
+  /// Typically the [leading] widget is an [Icon] or an [IconButton].
+  final Widget? leading;
 
   /// A list of Widgets to display in a row after the [title] widget.
   ///
@@ -74,6 +81,14 @@ class MasterDetailsFlow extends StatefulWidget {
   /// selected page.
   final int? initialPage;
 
+  /// Sets the initial focus on either the master or details page.
+  ///
+  /// Defaults to [Focus.details]
+  ///
+  /// See:
+  ///   * [Focus]
+  final Focus initialFocus;
+
   /// Selects the app bar style used when details page is in lateral view.
   ///
   /// See:
@@ -112,7 +127,7 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
         'Initial page out of bounds',
       );
       selectedItem = widget.items[widget.initialPage!] as MasterItem;
-      focus = Focus.details;
+      focus = widget.initialFocus;
     }
   }
 
@@ -307,6 +322,7 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
   AppBar _appBar() {
     return AppBar(
       automaticallyImplyLeading: widget.autoImplyLeading,
+      leading: widget.leading,
       actions: widget.actions,
       title: widget.title,
       scrolledUnderElevation: 0,
@@ -317,16 +333,19 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
     switch (appBarSize) {
       case DetailsAppBarSize.small:
         return SliverAppBar(
+          leading: widget.leading,
           actions: widget.actions,
           title: widget.title,
         );
       case DetailsAppBarSize.medium:
         return SliverAppBar.medium(
+          leading: widget.leading,
           actions: widget.actions,
           title: widget.title,
         );
       case DetailsAppBarSize.large:
         return SliverAppBar.large(
+          leading: widget.leading,
           actions: widget.actions,
           title: widget.title,
         );
