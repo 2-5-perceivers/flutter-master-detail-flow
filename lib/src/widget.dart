@@ -15,6 +15,7 @@ class MasterDetailsFlow extends StatefulWidget {
     this.autoImplyLeading = true,
     this.breakpoint = 700,
     this.initialPage,
+    this.initialFocus = Focus.details,
     this.lateralMasterPanelWidth = 300.0,
     this.detailsPanelCornersRadius = 12.0,
     this.lateralListTileTheme,
@@ -74,6 +75,14 @@ class MasterDetailsFlow extends StatefulWidget {
   /// selected page.
   final int? initialPage;
 
+  /// Sets the initial focus on either the master or details page.
+  ///
+  /// Defaults to [Focus.details]
+  ///
+  /// See:
+  ///   * [Focus]
+  final Focus initialFocus;
+
   /// Selects the app bar style used when details page is in lateral view.
   ///
   /// See:
@@ -112,7 +121,7 @@ class _MasterDetailsFlowState extends State<MasterDetailsFlow> {
         'Initial page out of bounds',
       );
       selectedItem = widget.items[widget.initialPage!] as MasterItem;
-      focus = Focus.details;
+      focus = widget.initialFocus;
     }
   }
 
