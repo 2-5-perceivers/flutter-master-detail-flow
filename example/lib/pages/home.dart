@@ -1,7 +1,7 @@
-import 'package:example/pages/custom_details_item.dart';
+/* import 'package:example/pages/custom_details_item.dart';
 import 'package:example/pages/future.dart';
 import 'package:example/pages/settings.dart';
-import 'package:example/widgets/label.dart';
+import 'package:example/widgets/label.dart'; */
 import 'package:flutter/material.dart';
 import 'package:master_detail_flow/master_detail_flow.dart';
 
@@ -13,10 +13,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MasterDetailsFlow(
+      body: MDScaffold(
         title: const Text('Simple flow'),
         items: [
-          MasterItemHeader(
+          DrawerHeader(
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -27,33 +27,33 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          MasterItem(
-            'Master item 1',
-            subtitle: 'Tap to learn more about children',
-            detailsBuilder: (_) => const _HomePageOne(),
+          MDItemPage(
+            title: const Text('Master item 1'),
+            subtitle: const Text('Tap to learn more about children'),
+            pageBuilder: (_) => const Placeholder(),
           ),
-          MasterItem(
-            'Master item 2',
-            subtitle: 'Tap to learn about slivers',
-            detailsBuilder: (_) => const _HomePageTwo(),
+          MDItemPage(
+            title: const Text('Master item 2'),
+            subtitle: const Text('Tap to learn about slivers'),
+            pageBuilder: (_) => const Placeholder(),
           ),
-          MasterItem(
-            'Master item 3',
-            detailsBuilder: (_) => const _HomePageThree(),
+          MDItemPage(
+            title: const Text('Master item 3'),
+            pageBuilder: (_) => const Placeholder(),
           ),
-          const MasterItemDivider(),
-          MasterItem(
-            'Master item 4',
-            subtitle: 'Master items can have icons',
+          Divider(),
+          MDItemPage(
+            title: const Text('Master item 4'),
+            subtitle: const Text('Master items can have icons'),
             leading: const Icon(Icons.unfold_more_double_outlined),
-            detailsBuilder: (_) => const _HomePageFour(),
+            pageBuilder: (_) => const Placeholder(),
           ),
         ],
       ),
     );
   }
 }
-
+/* 
 class _HomePageFour extends StatelessWidget {
   const _HomePageFour();
 
@@ -215,3 +215,4 @@ class _HomePageOne extends StatelessWidget {
     );
   }
 }
+ */

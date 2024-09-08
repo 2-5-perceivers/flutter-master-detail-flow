@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:master_detail_flow/master_detail_flow.dart';
 
 class PageFuture extends StatelessWidget {
@@ -56,3 +56,4 @@ class _MasterLoading extends StatelessWidget implements MasterItemBase {
     );
   }
 }
+ */

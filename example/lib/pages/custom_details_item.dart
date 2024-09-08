@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:master_detail_flow/master_detail_flow.dart';
 
 /// To create your custom DetailsItem all you need is to get the flow's settings
@@ -57,3 +57,4 @@ class PageCustom extends StatelessWidget {
     );
   }
 }
+ */

@@ -1,4 +1,4 @@
-import 'package:example/widgets/label.dart';
+/* import 'package:example/widgets/label.dart';
 import 'package:flutter/material.dart';
 import 'package:master_detail_flow/master_detail_flow.dart';
 
@@ -124,3 +124,4 @@ class _PageSettingsNotificationsState
     );
   }
 }
+ */
