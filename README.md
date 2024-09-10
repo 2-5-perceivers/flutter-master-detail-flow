@@ -20,7 +20,7 @@
 
 A Flutter plugin that allows you to build fast, responsive and beautiful master <-> details flows.
 
-![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/l1.png?raw=true)
+![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/demo.gif?raw=true)
 
 ## Getting started
 
@@ -116,7 +116,3 @@ Also you should read https://pub.dev/documentation/master_detail_flow/latest/
 ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/d1.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/d2.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/d3.png?raw=true)
 
 ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/m1.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/m2.png?raw=true)
-
-<video width="320" height="240" controls>
-  <source src="https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/demo_video.mp4?raw=true" type="video/mp4">
-</video>
