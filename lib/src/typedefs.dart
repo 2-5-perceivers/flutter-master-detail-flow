@@ -1,4 +1,4 @@
 import 'package:flutter/widgets.dart';
 
-/// Signature for the builder of a Details page
-typedef DetailsBuilder = Widget Function(BuildContext context);
+/// A utility typedef to build a widget.
+typedef MDWidgetBuilder = Widget Function(BuildContext context);

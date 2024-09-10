@@ -1,11 +1,17 @@
 library master_detail_flow;
 
-export 'package:master_detail_flow/src/details_item.dart' show DetailsItem;
-export 'package:master_detail_flow/src/enums.dart'
-    show DetailsAppBarSize, Focus;
-export 'package:master_detail_flow/src/flow_settings.dart'
-    show MasterDetailsFlowSettings;
-export 'package:master_detail_flow/src/master_item.dart'
-    show MasterItem, MasterItemBase, MasterItemHeader, MasterItemDivider;
-export 'package:master_detail_flow/src/typedefs.dart' show DetailsBuilder;
-export 'package:master_detail_flow/src/widget.dart' show MasterDetailsFlow;
+export 'src/details_items/details_page_scaffold.dart' show DetailsPageScaffold;
+export 'src/details_items/details_page_sliver_list.dart'
+    show DetailsPageSliverList;
+export 'src/enums/app_bar_size.dart' show MDAppBarSize;
+export 'src/enums/breakpoint.dart' show MDBreakpoint;
+export 'src/enums/focus.dart' show MDFocus;
+export 'src/enums/view_mode.dart' show MDViewMode;
+export 'src/items/padding.dart' show MDPadding;
+export 'src/items/page.dart' show MDItem;
+export 'src/models/theme.dart' show MDThemeData;
+export 'src/providers/controller.dart' show MDController;
+export 'src/providers/details.dart' show DetailsPanelProvider;
+export 'src/providers/theme.dart' show MDTheme;
+export 'src/widgets/flow_view.dart' show MDFlowView;
+export 'src/widgets/material_scaffold.dart' show MDScaffold;
