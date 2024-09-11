@@ -16,4 +16,6 @@ export 'src/providers/controller.dart' show MDController;
 export 'src/providers/details.dart' show DetailsPanelProvider;
 export 'src/providers/theme.dart' show MDTheme;
 export 'src/widgets/flow_view.dart' show MDFlowView;
+export 'src/widgets/material_licenses_page.dart'
+    show MDLicensesPage, MDLicensesPageHeader;
 export 'src/widgets/material_scaffold.dart' show MDScaffold;

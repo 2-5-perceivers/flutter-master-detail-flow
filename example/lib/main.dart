@@ -71,7 +71,32 @@ class HomePage extends StatelessWidget {
           leading: const Icon(Icons.unfold_more_double_outlined),
           pageBuilder: (_) => const HomePageFour(),
         ),
-        const MDPadding(child: AboutListTile()),
+        MDPadding(
+          child: ListTile(
+            title: const Text('Open MDLicensePage'),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => MDLicensesPage(
+                    items: [
+                      const MDLicensesPageHeader(
+                        appIcon: FlutterLogo(),
+                        appName: Text('MasterDetailFlow'),
+                        appLegalese: 'Version 1.0',
+                      ),
+                      MDItem(
+                        title: const Text('Privacy Policy'),
+                        pageBuilder: (context) => const DetailsPageScaffold(
+                          title: Text('App privacy policy'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
       ],
     );
   }

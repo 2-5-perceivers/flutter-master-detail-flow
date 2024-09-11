@@ -131,6 +131,8 @@ For further details, visit the [documentation](https://pub.dev/documentation/mas
 
 ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/m1.png?raw=true) ![Screeshot](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/m2.png?raw=true)
 
+![License page](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/images/license_page.png?raw=true)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/2-5-perceivers/flutter-master-detail-flow/blob/master/LICENSE) file for more details.
