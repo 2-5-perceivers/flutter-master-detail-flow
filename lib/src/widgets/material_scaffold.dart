@@ -85,7 +85,7 @@ class MDScaffold extends StatefulWidget {
   final WidgetBuilder? initialPageBuilder;
 
   /// Sets the initial focus on either the master or details page.
-  /// If the initial focus is set to [MDFocus.details] and an [initialPage] is
+  /// If the initial focus is set to [MDFocus.details] and an [initialPageId] is
   /// set, the flow will push the inital page to full screen in page mode.
   ///
   /// Defaults to [MDFocus.master].

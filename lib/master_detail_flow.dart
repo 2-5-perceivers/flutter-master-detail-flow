@@ -1,3 +1,5 @@
+/// Master Detail Flow is a Flutter package that provides a simple way to create
+/// a master-detail flow layout.
 library master_detail_flow;
 
 export 'src/details_items/details_page_scaffold.dart' show DetailsPageScaffold;

@@ -1,7 +1,18 @@
 name: master_detail_flow
-description: A package that provides a simple master-detail-flow with material 3
+description: A package designed to help you easily create sleek, responsive master-detail flows.
 version: 3.0.0
 repository: https://github.com/2-5-perceivers/flutter-master-detail-flow
+funding:
+  - https://github.com/sponsors/rares45
+  - https://buymeacoffee.com/raresvanca
+topics:
+  - responsive
+  - material
+  - navigation
+  - layout
+screenshots:
+  - description: Switching between detail pages
+    path: images/demo.gif
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
