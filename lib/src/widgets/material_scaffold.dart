@@ -145,6 +145,14 @@ class _MDScaffoldState extends State<MDScaffold> {
     if (oldWidget.items != widget.items) {
       _controller.items = widget.items;
     }
+
+    if (oldWidget.initialPageId == null && widget.initialPageId != null) {
+      _controller.selectPage(
+        widget.initialPageId!,
+        builder: widget.initialPageBuilder!,
+        preventFocusChange: true,
+      );
+    }
     super.didUpdateWidget(oldWidget);
   }
 

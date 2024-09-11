@@ -98,11 +98,18 @@ class MDController extends ChangeNotifier {
   MDWidgetBuilder? get selectedPageBuilder => _selectedPageBuilder;
 
   /// Selects a page(master item) and opens the details page.
-  void selectPage(String id, {required MDWidgetBuilder builder}) {
+  /// If [preventFocusChange] is set to true, the focus will not change.
+  void selectPage(
+    String id, {
+    required MDWidgetBuilder builder,
+    bool preventFocusChange = false,
+  }) {
     _selectedPageId = id;
-    _focus = MDFocus.details;
     _selectedPageBuilder = builder;
-    if (viewMode == MDViewMode.page) {
+    if (!preventFocusChange) {
+      _focus = MDFocus.details;
+    }
+    if (viewMode == MDViewMode.page && _focus == MDFocus.details) {
       unawaited(navigatorKey.currentState!.pushNamed(detailsRouteName));
     }
 
