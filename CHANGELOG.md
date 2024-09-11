@@ -1,3 +1,7 @@
+## 3.1.0
+* New MDLicensesPage that is a more customizable version of LicensePage
+* Fixed didUpdateWidget bug
+
 ## 3.0.0
 * Rewrote from scratch to make it simpler, more powerful and more performant
 * Using internal navigator for better semantics
